@@ -8,10 +8,11 @@ namespace MultiShop.Discount.Services
     {
         private readonly DapperContext _context;
 
-        private DiscountService(DapperContext context)
+        public DiscountService(DapperContext context)
         {
             _context = context;
         }
+
         public async Task CreateCouponAsync(CreateCouponDTO createCouponDTO)
         {
             string query = "INSERT INTO Coupons (Code,Rate,IsActive,ValidDate) values (@code,@rate,@isActive,@validDate)";
