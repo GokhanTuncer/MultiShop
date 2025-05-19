@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 //Kullanıcı yetkilendirmeleri
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 using System.Security.Cryptography.Xml;
@@ -34,6 +35,7 @@ namespace MultiShop.IdentityServer
         };
         public static IEnumerable<Client> Clients => new Client[]
         {
+            //Visitor
             new Client
             {
                 ClientId="MultiShopVisitorID",
@@ -41,8 +43,33 @@ namespace MultiShop.IdentityServer
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
                 AllowedScopes={"CatalogReadPermission"}
+            },
+            //Manager
+            new Client
+            {
+                ClientId="MultiShopManagerID",
+                ClientName="MultiShop Manager User",
+                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                ClientSecrets={new Secret("multishopsecret".Sha256())},
+                AllowedScopes={"CatalogReadPermission","CatalogFullPermission"}
+            },
+           //Admin
+            new Client
+            {
+                ClientId="MultiShopAdminID",
+                ClientName="MultiShop Admin User",
+                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                ClientSecrets={new Secret("multishopsecret".Sha256())},
+                AllowedScopes={"CatalogReadPermission","CatalogFullPermission","DiscountFullPermission","OrderFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName,
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email
+                },
+                AccessTokenLifetime=600
             }
         };
+    };
 
     }
 }
