@@ -4,6 +4,7 @@
 //Kullanıcı yetkilendirmeleri
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Security.Cryptography.Xml;
 
 namespace MultiShop.IdentityServer
 {
@@ -16,7 +17,7 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceOrder") { Scopes = {"OrderFullPermissionOrderFullPermission" } }
         };
 
-       
+
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
             new IdentityResources.OpenId(),
@@ -31,5 +32,17 @@ namespace MultiShop.IdentityServer
             new ApiScope("DicountFullPermission", "Full authority for discoıunt operations"),
             new ApiScope("OrderFullPermission", "Full authority for order operations")
         };
+        public static IEnumerable<Client> Clients => new Client[]
+        {
+            new Client
+            {
+                ClientId="MultiShopVisitorID",
+                ClientName="MultiShop Visitor User",
+                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                ClientSecrets={new Secret("multishopsecret".Sha256())},
+                AllowedScopes={"CatalogReadPermission"}
+            }
+        };
+
     }
 }
