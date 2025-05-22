@@ -43,13 +43,13 @@ namespace MultiShop.Cargo.WebApi.Controllers
 
             };
             _cargoCustomerService.TInsert(cargoCustomer);
-            return Ok("Kargo şirketi başarıyla eklendi.");
+            return Ok("Kargo müşterisi başarıyla eklendi.");
         }
         [HttpDelete]
         public IActionResult DeleteCargoCustomer(int id)
         {
             _cargoCustomerService.TDelete(id);
-            return Ok("Kargo şirketi başarıyla silindi.");
+            return Ok("Kargo müşterisi başarıyla silindi.");
         }
         [HttpPut]
         public IActionResult UpdateCargoCustomer(UpdateCargoCustomerDTO updateCargoCustomerDTO)
@@ -66,7 +66,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 City = updateCargoCustomerDTO.City
 
             };
-            return Ok("Kargo şirketi başarıyla güncellendi.");
+            return Ok("Kargo müşterisi başarıyla güncellendi.");
         }
     }
 }
