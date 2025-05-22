@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiShop.Cargo.DTOLayer.CargoCompanyDTOs
+namespace MultiShop.Cargo.DTOLayer.DTOs.CargoCompanyDTOs
 {
-    public class UpdateCargoCompanyDTO
+    public class CreateCargoCompanyDTO
     {
-        public int CargoCompanyID { get; set; }
         public string CargoCompanyName { get; set; }
     }
 }
