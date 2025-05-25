@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using MultiShop.Basket.LoginServices;
 using MultiShop.Basket.Services;
 using MultiShop.Basket.Settings;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var requireAuthorizePolicy = new AuthorizationPolicyBuilder()
     .RequireAuthenticatedUser()
     .Build();
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); // Clear default claim mappings to avoid conflicts
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt=>
