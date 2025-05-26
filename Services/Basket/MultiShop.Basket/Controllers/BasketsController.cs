@@ -38,4 +38,5 @@ namespace MultiShop.Basket.Controllers
             await _basketService.DeleteBasket(_loginService.GetUserId);
             return Ok("Sepetiniz silindi.");
         }
+    }
 }
