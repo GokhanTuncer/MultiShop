@@ -69,7 +69,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteCategory(string id)
         {
             var client = _httpclientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44312/api/Categories/" + id);
+            var responseMessage = await client.DeleteAsync($"https://localhost:44312/api/Categories?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
