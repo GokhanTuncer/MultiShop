@@ -1,5 +1,4 @@
-﻿@using MultiShop.DTOLayer.CatalogDTOs.CategoryDTOs
-@model List<CreateCategoryDTO>
+﻿@model CreateCategoryDTO
 @{
     ViewData["Title"] = "CreateCategory";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -16,10 +15,7 @@
                     <form method="post">
                         <label>Kategori Adı</label>
                         <input type="text" class="form-control" asp-for="CategoryName" />
-                        <br />
-                        <label>Kategori Görsel</label>
-                        <input type="text" class="form-control" asp-for="ImageUrl" />
-                        <br />
+                        <br />  
                         <button class="btn btn-primary">Kategoriyi Ekle</button>
                     </form>
                 </div>
