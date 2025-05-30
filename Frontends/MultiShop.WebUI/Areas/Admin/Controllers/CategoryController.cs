@@ -64,7 +64,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
-        [HttpDelete]
+        
         [Route("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory(string id)
         {
@@ -76,5 +76,25 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
+        [Route("UpdateCategory/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(string id)
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kategori Yönetimi";
+            ViewBag.v3 = "Kategori Güncelle";
+            ViewBag.v0 = "Kategori İşlemleri";
+            var client = _httpclientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44312/api/Categories/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCategoryDTO>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
     }
 }
