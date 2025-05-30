@@ -14,14 +14,13 @@
                 <div class="bs-example" data-example-id="bordered-table">
 
                     <form method="post">
-                        <label>Kategori ID</label>
-                        <input type="text" class="form-control" asp-for="CategoryID" />
-                        <br />
+                        <input type="hidden" asp-for="CategoryID" />
                         <label>Kategori Adı</label>
                         <input type="text" class="form-control" asp-for="CategoryName" />
                         <br />
                         <button class="btn btn-primary">Kategoriyi Güncelle</button>
                     </form>
+
                 </div>
             </div>
         </div>
