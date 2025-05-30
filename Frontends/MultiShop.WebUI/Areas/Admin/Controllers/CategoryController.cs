@@ -69,7 +69,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteCategory(string id)
         {
             var client = _httpclientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44312/api/Categories?id=" + id);
+            var responseMessage = await client.DeleteAsync("https://localhost:44312/api/Categories?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
@@ -86,7 +86,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Kategori Güncelle";
             ViewBag.v0 = "Kategori İşlemleri";
             var client = _httpclientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44312/api/Categories/" + id);
+            var responseMessage = await client.DeleteAsync("https://localhost:44312/api/Categories/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -103,7 +103,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpclientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCategoryDTO);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync($"https://localhost:44312/api/Categories" , content);
+            var responseMessage = await client.PutAsync("https://localhost:44312/api/Categories" , content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
