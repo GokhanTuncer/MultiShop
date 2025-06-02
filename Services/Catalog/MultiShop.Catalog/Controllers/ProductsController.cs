@@ -47,5 +47,12 @@ namespace MultiShop.Catalog.Controllers
             await _productService.DeleteProductAsync(id);
             return Ok("Ürün başarıyla silindi");
         }
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            var values = await _productService.GetProductsWithCategoryAsync();
+            return Ok(values);
+
+        }
     }
 }
