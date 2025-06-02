@@ -86,7 +86,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Slider Çıkan Görsel Güncelle";
             ViewBag.v0 = "Öne Çıkan Görsel İşlemleri";
             var client = _httpclientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:44312/api/FeatureSliders/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44312/api/FeatureSliders/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

@@ -86,7 +86,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Kategori Güncelle";
             ViewBag.v0 = "Kategori İşlemleri";
             var client = _httpclientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:44312/api/Categories/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44312/api/Categories/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
