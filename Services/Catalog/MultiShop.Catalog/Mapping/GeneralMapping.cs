@@ -4,6 +4,7 @@ using MultiShop.Catalog.DTOs.FeatureSliderDTOs;
 using MultiShop.Catalog.DTOs.ProductDetailDTOs;
 using MultiShop.Catalog.DTOs.ProductDTOs;
 using MultiShop.Catalog.DTOs.ProductImageDTOs;
+using MultiShop.Catalog.DTOs.SpecialOfferDTOs;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Services.FeatureSliderServices;
 
@@ -38,6 +39,11 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<FeatureSlider, CreateFeatureSliderDTO>().ReverseMap();
             CreateMap<FeatureSlider, UpdateFeatureSliderDTO>().ReverseMap();
             CreateMap<FeatureSlider, GetByIDFeatureSliderDTO>().ReverseMap();
+
+            CreateMap<SpecialOffer, ResultSpecialOfferDTO>().ReverseMap();
+            CreateMap<SpecialOffer, CreateSpecialOfferDTO>().ReverseMap();
+            CreateMap<SpecialOffer, UpdateSpecialOfferDTO>().ReverseMap();
+            CreateMap<SpecialOffer, GetByIDSpecialOfferDTO>().ReverseMap();
 
         }
     }
