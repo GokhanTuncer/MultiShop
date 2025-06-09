@@ -1,24 +1,18 @@
-﻿<div class="container-fluid pt-5 pb-3">
+﻿@model List<ResultOfferDiscountDTO>
+<div class="container-fluid pt-5 pb-3">
     <div class="row px-xl-5">
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="https://www.shutterstock.com/image-photo/set-home-kitchen-appliances-room-600nw-2473408983.jpg" alt="">
-                <div class="offer-text">
-                    <h6 class="text-white text-uppercase">20% İndirim</h6>
-                    <h3 class="text-white mb-3">Elektrikli Ev Aletleri</h3>
-                    <a href="" class="btn btn-primary">Alışverişe başla</a>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="@item.ImageURL" alt="">
+                    <div class="offer-text">
+                        <h6 class="text-white text-uppercase">@item.Title</h6>
+                        <h3 class="text-white mb-3">@item.Subtitle</h3>
+                        <a href="" class="btn btn-primary">@item.ButtonTitle</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="https://mo-production-public.s3.eu-west-3.amazonaws.com/s3fs-public/2020-04/HomeAccessories__C__001__826x485px.jpg" alt="">
-                <div class="offer-text">
-                    <h6 class="text-white text-uppercase">30% İndirim</h6>
-                    <h3 class="text-white mb-3"> Ev Akseuarları</h3>
-                    <a href="" class="btn btn-primary">Hemen incele</a>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
