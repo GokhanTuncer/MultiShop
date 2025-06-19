@@ -2,6 +2,7 @@
 using MultiShop.DTOLayer.CommentDTOs;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 
 namespace MultiShop.WebUI.Controllers
 {
@@ -25,23 +26,28 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<PartialViewResult> AddComment(string id)
+        public PartialViewResult AddComment(string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7126/api/Comments/CommentListByProductId?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCommentDTO>>(jsonData);
-                return PartialView(values);
-            }
 
             return PartialView();
         }
         [HttpPost]
-        public IActionResult AddComment(CreateCommentDTO createCommentDTO)
+        public async Task<IActionResult> AddComment(CreateCommentDTO createCommentDto)
         {
-            return RedirectToAction("Index", "Default");
+            createCommentDto.ImageURL = "test";
+            createCommentDto.Rating = 1;
+            createCommentDto.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            createCommentDto.Status = false;
+            createCommentDto.ProductID = "65dc67a7705038bfa8fb1f87";
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCommentDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7126/api/Comments", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Default");
+            }
+            return View();
         }
     }
 }
