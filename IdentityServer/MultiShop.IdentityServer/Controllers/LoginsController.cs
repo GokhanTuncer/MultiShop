@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.IdentityServer.DTOs;
 using MultiShop.IdentityServer.Models;
+using MultiShop.IdentityServer.Tools;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace MultiShop.IdentityServer.Controllers
     public class LoginsController : ControllerBase
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public LoginsController(SignInManager<ApplicationUser> signInManager)
         {
@@ -27,9 +29,17 @@ namespace MultiShop.IdentityServer.Controllers
                 userLoginDTO.Password,
                 isPersistent: false,
                 lockoutOnFailure: false);
+
+            var user = await _userManager.FindByNameAsync(userLoginDTO.Username);
+
+
             if (result.Succeeded)
             {
-                return Ok("Giriş Başarılı");
+                GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
+                model.Username = userLoginDTO.Username;
+                model.ID = user.Id;
+                var token = JwtTokenGenerator.GenerateToken(model);
+                return Ok(token);
             }
             else
             {
