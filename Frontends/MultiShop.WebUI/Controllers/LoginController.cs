@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MultiShop.DTOLayer.IdentityDTOs.LoginDTOs;
 using MultiShop.WebUI.Models;
 using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,11 +16,13 @@ namespace MultiShop.WebUI.Controllers
     {
         private readonly IHttpClientFactory _httpclientFactory;
         private readonly ILoginService _loginService;
+        private readonly IIdentityService _identityService;
 
-        public LoginController(IHttpClientFactory httpclientFactory, ILoginService loginService)
+        public LoginController(IHttpClientFactory httpclientFactory, ILoginService loginService, IIdentityService identityService)
         {
             _httpclientFactory = httpclientFactory;
             _loginService = loginService;
+            _identityService = identityService;
         }
 
         [HttpGet]
@@ -30,24 +33,24 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateLoginDTO createLoginDTO)
         {
-            
+
             var client = _httpclientFactory.CreateClient();
-            var content = new StringContent(JsonSerializer.Serialize(createLoginDTO),Encoding.UTF8,"application/json");
+            var content = new StringContent(JsonSerializer.Serialize(createLoginDTO), Encoding.UTF8, "application/json");
             var response = await client.PostAsync("http://localhost:5001/api/Logins", content);
             if (response.IsSuccessStatusCode)
             {
-               var jsonData = await response.Content.ReadAsStringAsync();
+                var jsonData = await response.Content.ReadAsStringAsync();
                 var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(jsonData, new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
-                if (tokenModel!=null)
+                if (tokenModel != null)
                 {
                     JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
                     var token = handler.ReadJwtToken(tokenModel.Token);
                     var claims = token.Claims.ToList();
 
-                    if(tokenModel.Token != null)
+                    if (tokenModel.Token != null)
                     {
                         claims.Add(new Claim("multishoptoken", tokenModel.Token));
                         var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
@@ -64,6 +67,19 @@ namespace MultiShop.WebUI.Controllers
                 }
             }
             return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInDTO SignInDTO)
+        {
+            await _identityService.SignIn(SignInDTO);
+            return RedirectToAction("Index", "Default");
         }
     }
 }

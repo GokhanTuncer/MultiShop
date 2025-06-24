@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MultiShop.DTOLayer.IdentityDTOs.LoginDTOs
 {
-    public class SignUpDTO
+    public class SignInDTO
     {
         public string Username { get; set; }
         public string Password { get; set; }
