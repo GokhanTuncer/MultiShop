@@ -1,6 +1,7 @@
 ﻿using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MultiShop.DTOLayer.IdentityDTOs.LoginDTOs;
 using MultiShop.WebUI.Services.Interfaces;
@@ -12,21 +13,23 @@ namespace MultiShop.WebUI.Services.Concrete
     public class IdentityService : IIdentityService
     {
         private readonly HttpClient _httpClient;
-        private readonly ClientSettings _clientSettings;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ClientSettings _clientSettings;
+        private readonly ServiceApiSettings _serviceApiSettings;
 
-        public IdentityService(HttpClient httpClient, ClientSettings clientSettings, IHttpContextAccessor httpContextAccessor)
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings, IOptions<ServiceApiSettings> serviceApiSettings)
         {
             _httpClient = httpClient;
-            _clientSettings = clientSettings;
             _httpContextAccessor = httpContextAccessor;
+            _clientSettings = clientSettings.Value;
+            _serviceApiSettings = serviceApiSettings.Value;
         }
 
         public async Task<bool> SignIn(SignInDTO signInDTO)
         {
             var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
-                Address = "http://localhost:5001",
+                Address = _serviceApiSettings.IdentityServerUrl,
                 Policy = new DiscoveryPolicy
                 {
                     ValidateIssuerName = false
