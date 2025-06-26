@@ -12,9 +12,9 @@ namespace MultiShop.WebUI.Services.Concrete
             _httpClient = httpClient;
         }
 
-        public Task<UserDetailViewModel> GetUserInfo()
+        public async Task<UserDetailViewModel> GetUserInfo()
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetFromJsonAsync<UserDetailViewModel>("api/user/getuserinfo");
         }
     }
 }
