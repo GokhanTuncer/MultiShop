@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices
 {
-    public class SpecialOfferService
+    public class SpecialOfferService : ISpecialOfferService
     {
         private readonly HttpClient _httpClient;
         public SpecialOfferService(HttpClient httpClient)
