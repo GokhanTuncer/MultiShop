@@ -72,3 +72,4 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "OfferDiscount", new { area = "Admin" });
         }
     }
+}
