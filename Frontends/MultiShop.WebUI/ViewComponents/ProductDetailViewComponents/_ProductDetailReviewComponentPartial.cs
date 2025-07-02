@@ -2,7 +2,7 @@
 using MultiShop.DTOLayer.CommentDTOs;
 using Newtonsoft.Json;
 
-namespace MultiShop.WebUI.ViewComponents.ProductListViewComponents
+namespace MultiShop.WebUI.ViewComponents.ProductDetailViewComponents
 {
     public class _ProductDetailReviewComponentPartial : ViewComponent
     {
