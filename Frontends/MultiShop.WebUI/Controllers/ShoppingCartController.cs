@@ -16,10 +16,12 @@ namespace MultiShop.WebUI.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var values = await _basketService.GetBasket();
-            return View(values);
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory2 = "Sepetim";
+            return View();
         }
 
         public async Task<IActionResult> AddBasketItem(string productId)
