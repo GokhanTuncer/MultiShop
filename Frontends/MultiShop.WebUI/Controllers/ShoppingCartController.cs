@@ -24,15 +24,16 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddBasketItem(string productId)
+        public async Task<IActionResult> AddBasketItem(string id)
         {
-            var values = await _productService.GetByIdProductAsync(productId);
+            var values = await _productService.GetByIdProductAsync(id);
             var items = new BasketItemDTO
             {
                 ProductID = values.ProductID,
                 ProductName = values.ProductName,
                 Price = values.Price,
-                Quantity = 1
+                Quantity = 1,
+                ProductImageURL = values.ProductImageURL
             };
             await _basketService.AddBasketItem(items);
             return RedirectToAction("Index");
