@@ -22,7 +22,7 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
             values.UserID = updateAddressCommand.UserID;
             values.District = updateAddressCommand.District;
             values.City = updateAddressCommand.City;
-            values.Detail = updateAddressCommand.Detail;
+            values.Detail1 = updateAddressCommand.Detail;
             await _repository.UpdateAsync(values);
         }
     }
