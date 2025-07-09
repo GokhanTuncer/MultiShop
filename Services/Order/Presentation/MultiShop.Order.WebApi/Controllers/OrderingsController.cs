@@ -48,5 +48,12 @@ namespace MultiShop.Order.WebApi.Controllers
             await _mediator.Send(new RemoveOrderingCommand(id));
             return Ok("Sipariş Başarıyla Silindi");
         }
+
+        [HttpGet("GetOrderingByUserID")]
+        public async Task<IActionResult> GetOrderingByUserID(string id)
+        {
+            var result = await _mediator.Send(new GetOrderingByUserIDQuery(id));
+            return Ok(result);
+        }
     }
 }

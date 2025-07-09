@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries
 {
-    public class GetOrderingByIDQuery : IRequest<GetOrderingByIDQueryResult> //Tek bir değer döndürecek
+    public class GetOrderingByIDQuery : IRequest<GetOrderingByIDQueryResult>
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public GetOrderingByIDQuery(int id)
         {
-            ID = id;
+            Id = id;
         }
     }
 }
