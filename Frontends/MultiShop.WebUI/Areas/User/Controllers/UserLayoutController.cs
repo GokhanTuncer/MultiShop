@@ -2,9 +2,10 @@
 
 namespace MultiShop.WebUI.Areas.User.Controllers
 {
+    [Area("User")]
     public class UserLayoutController : Controller
     {
-        [Area("User")]
+        
         public IActionResult Index()
         {
             return View();
