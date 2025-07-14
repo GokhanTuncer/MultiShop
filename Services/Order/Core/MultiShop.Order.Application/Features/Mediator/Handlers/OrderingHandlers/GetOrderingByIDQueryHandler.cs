@@ -20,7 +20,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
         }
         public async Task<GetOrderingByIDQueryResult> Handle(GetOrderingByIDQuery request, CancellationToken cancellationToken)
         {
-            var value = await _repository.GetByIDAsync(request.ID);
+            var value = await _repository.GetByIDAsync(request.Id);
             return new GetOrderingByIDQueryResult
             {
                 OrderingID = value.OrderingID,
