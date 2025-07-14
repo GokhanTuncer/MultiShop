@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MultiShop.Message.Dal.Context;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,10 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<MessageContext>(options
 {
     options.UseNpgsql(connectionString);
 });
+
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
