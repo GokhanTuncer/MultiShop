@@ -4,7 +4,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     public class CargoController : Controller
     {
-        public IActionResult CargoList()
+        public IActionResult CargoCompanyList()
         {
             return View();
         }

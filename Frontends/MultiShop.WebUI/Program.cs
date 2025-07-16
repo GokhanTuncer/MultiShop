@@ -88,7 +88,7 @@ builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 
 builder.Services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
 {
-    opt.BaseAddress = new Uri($"{values.Ocelot}/{values.Catalog.Path}");
+    opt.BaseAddress = new Uri($"{values.Ocelot}/{values.Cargo.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
