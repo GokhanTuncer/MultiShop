@@ -1,13 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.MessageServices;
 
 namespace MultiShop.WebUI.Areas.User.Controllers
 {
-    [Area("User")]
+    
     public class MessageController : Controller
     {
-        
+        private readonly IMessageService _messageService;
 
-        public IActionResult Index()
+        public MessageController(IMessageService messageService)
+        {
+            _messageService = messageService;
+        }
+
+        public async Task<IActionResult> Inbox(string id)
         {
             return View();
         }
