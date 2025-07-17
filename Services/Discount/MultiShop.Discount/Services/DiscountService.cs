@@ -72,6 +72,16 @@ namespace MultiShop.Discount.Services
             }
         }
 
+        public async Task<int> GetDiscountCount()
+        {
+            string query = "SELECT Count(*) FROM Coupons";
+            using (var connection = _context.CreateConnection())
+            {
+                var result = await connection.QueryFirstOrDefaultAsync<int>(query);
+                return result;
+            }
+        }
+
         public int GetDiscountCountRate(string code)
         {
             string query = "Select Rate From Coupons Where Code=@code";
