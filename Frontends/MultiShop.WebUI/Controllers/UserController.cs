@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Controllers
@@ -6,10 +7,13 @@ namespace MultiShop.WebUI.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly ICargoCustomerService _cargoCustomerService;
 
-        public UserController(IUserService userService)
+
+        public UserController(IUserService userService, ICargoCustomerService cargoCustomerService)
         {
             _userService = userService;
+            _cargoCustomerService = cargoCustomerService;
         }
 
         public async Task<IActionResult> Index()
@@ -19,6 +23,7 @@ namespace MultiShop.WebUI.Controllers
         }
         public async Task<IActionResult> UserAddressInfo(string id)
         {
+            var values = await _cargoCustomerService.GetByIdCargoCustomerInfoAsync(id);
             return View();
         }
     }
