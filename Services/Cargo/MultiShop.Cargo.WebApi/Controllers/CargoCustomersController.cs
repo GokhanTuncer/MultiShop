@@ -70,5 +70,11 @@ namespace MultiShop.Cargo.WebApi.Controllers
             };
             return Ok("Kargo müşterisi başarıyla güncellendi.");
         }
+
+        [HttpGet("GetCargoCustomerByID")]
+        public IActionResult GetCargoCustomerByID(string id)
+        {
+            return Ok(_cargoCustomerService.TGetCargoCustomerByID(id));
+        }
     }
 }
