@@ -1,4 +1,5 @@
-﻿using MultiShop.DTOLayer.DiscountDTOs;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using MultiShop.DTOLayer.DiscountDTOs;
 using MultiShop.DTOLayer.MessageDTOs;
 
 namespace MultiShop.WebUI.Services.MessageServices
@@ -22,6 +23,13 @@ namespace MultiShop.WebUI.Services.MessageServices
             var responseMessage = await _httpClient.GetAsync("http://localhost:5000/services/Message/UserMessage/GetMessageSendbox?id=" + id);
             var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultSendboxMessageDTO>>();
             return values;
+        }
+        public async Task<int> GetTotalMessageCountByReceiverId(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("UserMessage/GetTotalMessageCountByReceiverId/" + id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+
         }
     }
 }

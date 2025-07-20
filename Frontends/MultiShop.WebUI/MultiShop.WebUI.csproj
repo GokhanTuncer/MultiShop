@@ -44,6 +44,7 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Areas\User\Views\Cargo\" />
+    <Folder Include="SignalRHub\" />
   </ItemGroup>
 
   <ItemGroup>
