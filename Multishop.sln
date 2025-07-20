@@ -77,6 +77,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{9493
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalRRealTime", "SignalRRealTime", "{FD1DA865-6BC9-4BE5-8CA9-B3594B61FF60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.SignalRRealTimeApi", "Services\SignalRRealTime\MultiShop.SignalRRealTimeApi\MultiShop.SignalRRealTimeApi.csproj", "{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +167,10 @@ Global
 		{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,6 +208,8 @@ Global
 		{BCBFFDA1-3A5E-4C69-97A7-10958889BFCE} = {7811FFAF-C369-4C76-9A83-CE3B81C9AEF8}
 		{9493E815-6A4D-4C21-8944-9988047299B2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97} = {9493E815-6A4D-4C21-8944-9988047299B2}
+		{FD1DA865-6BC9-4BE5-8CA9-B3594B61FF60} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69} = {FD1DA865-6BC9-4BE5-8CA9-B3594B61FF60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C96EF1AF-74D1-4880-BD64-9239E03F9135}
