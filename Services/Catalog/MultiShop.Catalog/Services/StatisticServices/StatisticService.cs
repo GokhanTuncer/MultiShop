@@ -76,3 +76,4 @@ namespace MultiShop.Catalog.Services.StatisticServices
             return _productCollection.CountDocumentsAsync(FilterDefinition<Product>.Empty);
         }
     }
+}
