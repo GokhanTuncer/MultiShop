@@ -81,6 +81,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalRRealTime", "SignalRR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.SignalRRealTimeApi", "Services\SignalRRealTime\MultiShop.SignalRRealTimeApi\MultiShop.SignalRRealTimeApi.csproj", "{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Images.WebUI", "Services\Images\MultiShop.Images.WebUI\MultiShop.Images.WebUI.csproj", "{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,10 @@ Global
 		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +216,7 @@ Global
 		{0DFDD18D-96F0-4B20-9B0E-8447DF3F9B97} = {9493E815-6A4D-4C21-8944-9988047299B2}
 		{FD1DA865-6BC9-4BE5-8CA9-B3594B61FF60} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{C28E96AF-A21D-4F62-ACDF-8603C86EDA69} = {FD1DA865-6BC9-4BE5-8CA9-B3594B61FF60}
+		{A4E0B8AC-40D2-4ABF-9DFC-615F89F4B8BF} = {7811FFAF-C369-4C76-9A83-CE3B81C9AEF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C96EF1AF-74D1-4880-BD64-9239E03F9135}
